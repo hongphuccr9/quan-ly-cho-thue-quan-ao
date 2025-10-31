@@ -1,0 +1,5 @@
+{
+  "name": "Quản Lý Cho Thuê Quần Áo",
+  "description": "Một ứng dụng để quản lý việc cho thuê quần áo, theo dõi hàng tồn kho, khách hàng và xem báo cáo doanh thu theo tuần, tháng và năm.",
+  "requestFramePermissions": []
+}
