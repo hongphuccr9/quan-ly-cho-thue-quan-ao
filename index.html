@@ -62,5 +62,33 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script type="module" src="/index.tsx"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://yjbcislrcfdimttrffvs.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqYmNpc2xyY2ZkaW10dHJmZnZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5MTQzNDIsImV4cCI6MjA3NzQ5MDM0Mn0.02zHQF5jnQTtrC9o_J6TFtOlnSr32UFJ3D2PngQCF6Y";
+
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  async function loadClothes() {
+    const { data, error } = await supabase.from('clothes').select('*');
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    const list = document.getElementById('clothes-list');
+    list.innerHTML = '';
+    data.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - ${item.price} VNĐ`;
+      list.appendChild(li);
+    });
+  }
+
+  loadClothes();
+</script>
+
   </body>
 </html>
